@@ -115,17 +115,7 @@ def km(X, n_clusters, n_iters, gpu=1, split=3):
     aff = None
     
     #set centroids as random selection among set of points
-    indexes = []
-    for j in range(n_split):
-        b_i = (j*n_pts)//n_split
-        b_s = ((j+1)*n_pts)//n_split
-        c_i = (j*n_clusters)//n_split
-        c_s = ((j+1)*n_clusters)//n_split
-        idx = xp.random.permutation(xp.arange(b_i, b_s))[c_i:c_s]
-        if j == 0:
-            indexes = idx
-        else:
-             indexes = xp.concatenate([indexes, idx])
+    indexes = xp.random.permutation(xp.arange(n_pts))[:n_clusters]
     centroids= X[indexes]
     del indexes
 
