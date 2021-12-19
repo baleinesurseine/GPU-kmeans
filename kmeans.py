@@ -158,7 +158,7 @@ def km(X, n_clusters, n_iters, gpu=1, split=3):
                 centroids = cents
                 counts = cnts
             else:
-                cts, cnts = centers(X[b_i:b_s, :],
+                cents, cnts = centers(X[b_i:b_s, :],
                                         aff[b_i:b_s], n_clusters, gpu)
                 centroids += cents
                 counts += cnts
